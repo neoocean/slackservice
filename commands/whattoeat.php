@@ -1,6 +1,6 @@
 <?php
 
-if($command == '/뭐먹지')
+if($input['command'] == '/뭐먹지')
 {
 
 	if($text != '')

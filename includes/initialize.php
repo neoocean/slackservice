@@ -20,14 +20,14 @@ if( is_array($_POST) )
 	@reset($_POST);
 }
 
-$token = $_POST['token'];
-$team_id = $_POST['team_id'];
-$channel_id = $_POST['channel_id'];
-$channel_name = '#' . $_POST['channel_name'];
-$user_id = $_POST['user_id'];
-$user_name = $_POST['user_name'];
-$command = $_POST['command'];
-$text = $_POST['text'];
+$input['token'] = $_POST['token'];
+$input['team_id'] = $_POST['team_id'];
+$input['channel_id'] = $_POST['channel_id'];
+$input['channel_name'] = '#' . $_POST['channel_name'];
+$input['user_id'] = $_POST['user_id'];
+$input['user_name'] = $_POST['user_name'];
+$input['command'] = $_POST['command'];
+$input['text'] = $_POST['text'];
 
 $db = new sql_db(
 	$config['db_host'], 
@@ -37,7 +37,7 @@ $db = new sql_db(
 	false);
 if(!$db->db_connect_id)
 {
-	die('Could not connect to the database');
+	die('데이터베이스에 접속할 수 없습니다.');
 }
 
 ?>

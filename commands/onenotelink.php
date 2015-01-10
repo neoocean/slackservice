@@ -1,6 +1,6 @@
 <?php
 
-if($command == '/원노트')
+if($input['command'] == '/원노트')
 {
 	die();
 }

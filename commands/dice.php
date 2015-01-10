@@ -1,10 +1,10 @@
 <?php
 
-if($command == '/주사위')
+if($input['command'] == '/주사위')
 {
-	if($text != '')
+	if($input['text'] != '')
 	{
-		$argument = intval($text);
+		$argument = intval($input['text']);
 	}
 	else
 	{
@@ -17,7 +17,7 @@ if($command == '/주사위')
 	$payload = json_encode(array(
 		'text' => $result, 
 		'username' => $username, 
-		'channel' => $channel_name
+		'channel' => $input['channel_name']
 		));
 	sendPostToURL($config['url'], $payload);
 	die();
