@@ -11,14 +11,11 @@ if($input['command'] == '/주사위')
 		$argument = 100;
 	}
 
-	$result = rand(0, $argument) . ' / ' . $argument;
-	$username = '\'' . $user_name . '\' 님의 주사위';
-
 	$payload = json_encode(array(
-		'text' => $result, 
-		'username' => $username, 
-		'channel' => $input['channel_name']
-		));
+		'text' => 		rand(1, $argument) . ' / ' . $argument, 
+		'username' => 	'\'' . getRealnameByUsername($input['user_name']) . '\' 님의 주사위', 
+		'channel' => 	$input['channel_name']
+		), JSON_UNESCAPED_UNICODE);
 	sendPostToURL($config['url'], $payload);
 	die();
 }
