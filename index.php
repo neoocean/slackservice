@@ -1,16 +1,16 @@
 <?php
 
-include('./config.php');
-include('./includes/mysql.php');
-include('./includes/functions.php');
-include('./includes/initialize.php');
-include('./includes/auth.php');
-include('./includes/log.php');
+include('/home/public/config.php');
+include('/home/public/includes/mysql.php');
+include('/home/public/includes/functions.php');
+include('/home/public/includes/initialize.php');
+include('/home/public/includes/auth.php');
+include('/home/public/includes/log.php');
 
-include('./commands/dice.php');
-include('./commands/whattoeat.php');
-include('./commands/onenotelink.php');
-include('./commands/users.php');
+include('/home/public/commands/dice.php');
+include('/home/public/commands/whattoeat.php');
+include('/home/public/commands/onenotelink.php');
+include('/home/public/commands/users.php');
 
 die('아무것도 실행되지 않았습니다.');
 
