@@ -29,11 +29,6 @@ $user_name = $_POST['user_name'];
 $command = $_POST['command'];
 $text = $_POST['text'];
 
-if($team_id != $config['team_id'])
-{
-	die();
-}
-
 $db = new sql_db(
 	$config['db_host'], 
 	$config['db_user'], 
