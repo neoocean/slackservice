@@ -1,6 +1,11 @@
 <?php
 
-$config['url'] = 'https://hooks.slack.com/services/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';
-$config['team_id'] = 'T0392LQPG';
+$config['url'] = '';
+$config['team_id'] = '';
 
+$config['db_host'] = '';
+$config['db_name'] = '';
+$config['db_user'] = '';
+$config['db_password'] = '';
+	
 ?>

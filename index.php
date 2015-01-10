@@ -1,6 +1,7 @@
 <?php
 
 include('./config.php');
+include('./includes/mysql.php');
 include('./includes/functions.php');
 include('./includes/initialize.php');
 
