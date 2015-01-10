@@ -32,7 +32,7 @@ if($input['command'] == '/사용자')
 		}
 		else
 		{
-			exists = false;
+			$exists = false;
 		}
 
 		// 추가
@@ -47,7 +47,7 @@ if($input['command'] == '/사용자')
 			}
 			$next_id = $db->sql_fetchfield('id') + 1;
 			$db->sql_freeresult($result);
-			$sql = 'INSERT INTO ' . $config['db_name'] . '(id, name, realname) 
+			$sql = 'INSERT INTO ' . $config['db_name'] . '.users ' . '(id, name, realname) 
 					VALUES(\'' . $next_id . '\', \'' . $user_name . '\', \'' . $user_realname . '\');';
 			if(!($result = $db->sql_query($sql)))
 			{
@@ -60,9 +60,9 @@ if($input['command'] == '/사용자')
 		if($exists == true)
 		{
 			$sql = 'UPDATE users 
-					SET name = ' . $user_name . ', 
-						realname = ' . $user_realname . ' 
-					WHERE name = ' . $user_name . ' 
+					SET name = \'' . $user_name . '\', 
+						realname = \'' . $user_realname . '\' 
+					WHERE name = \'' . $user_name . '\' 
 					LIMIT 1;';
 			if(!($result = $db->sql_query($sql)))
 			{
@@ -88,6 +88,11 @@ if($input['command'] == '/사용자')
 		}
 		die('사용자를 삭제했습니다.');
 	} // ~ $subcommand 삭제
+
+	if($subcommand == '')
+	{
+		die('/사용자 추가 아이디 이름');
+	}
 
 }
 ?>
