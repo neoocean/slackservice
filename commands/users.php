@@ -91,7 +91,18 @@ if($input['command'] == '/사용자')
 
 	if($subcommand == '')
 	{
-		die('/사용자 추가 아이디 이름');
+		$sql = 'SELECT name, realname 
+				FROM users 
+				WHERE 1';
+		if(!($result = $db->sql_query($sql)))
+		{
+			die('쿼리에 실패했습니다: ' . $sql);
+		}
+		while( $row = $db->sql_fetchrow($result) )
+		{
+			echo $row['name'] . ': ' . $row['realname'] . chr(10);	
+		}
+		die('출력을 마쳤습니다.');
 	}
 
 }
