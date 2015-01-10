@@ -1,8 +1,8 @@
 <?php
 
-if($team_id != $config['team_id'])
+if($input['team_id'] != $config['team_id'])
 {
-	die();
+	die('인증에 실패했습니다.');
 }
 
 ?>
