@@ -13,4 +13,22 @@ function sendPostToURL($url, $string)
 	return(curl_exec($ch));
 }
 
+function getRealnameByUsername($username)
+{
+	global $db;
+
+	$sql = 'SELECT realname 
+			FROM users 
+			WHERE name = \'' . $username . '\' 
+			LIMIT 1;';
+	if(!($result = $db->sql_query($sql)))
+	{
+		die('쿼리에 실패했습니다: ' . $sql);
+	}
+	$realname = $db->sql_fetchfield('realname');
+	$db->sql_freeresult($result);
+
+	return($realname);
+}
+
 ?>
