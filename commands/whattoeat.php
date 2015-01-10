@@ -3,9 +3,9 @@
 if($input['command'] == '/뭐먹지')
 {
 
-	if($text != '')
+	if($input['text'] != '')
 	{
-		list($subcommand, $argument) = explode(' ', $text);
+		list($subcommand, $argument) = explode(' ', $input['text']);
 	}
 
 	if($subcommand == '추가')
