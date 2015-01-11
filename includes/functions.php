@@ -40,4 +40,31 @@ function encodeText($text)
 	return(base64_encode(urlencode($text)));
 }
 
+function getOnenoteNoteName($address)
+{
+
+	$end = strpos($address, '.one');
+	$begin = strrpos($address, '\\') + 1;
+
+	$section = substr($address, $begin, ($end - $begin));
+	$section = str_replace('%20', ' ', $section);
+
+	$end = strpos($address, '&section-id=');
+	$begin = strpos($address, '.one#') + 5;
+
+	$note = substr($address, $begin, ($end - $begin));
+	$note = str_replace('%20', ' ', $note);
+
+	if($note == '')
+	{
+		$title = $section;
+	}
+	else
+	{
+		$title = $section . ' / ' . $note;
+	}
+
+	return($title);
+}
+
 ?>
