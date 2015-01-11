@@ -17,7 +17,7 @@ if($input['command'] == '/뭐먹지')
 		// 중복 검사
 		$sql = 'SELECT id 
 				FROM command_whattoeat_list 
-				WHERE name = \'' . $argument . '\'';
+				WHERE name = \'' . decodeText($argument) . '\'';
 		if(!($result = $db->sql_query($sql)))
 		{
 			die('쿼리에 실패했습니다: ' . $sql);
@@ -41,7 +41,7 @@ if($input['command'] == '/뭐먹지')
 
 		// 추가
 		$sql = 'INSERT INTO  ' . $config['db_name'] . '.command_whattoeat_list (id, name) ' . 
-				'VALUES (\'' . $next_id . '\', \'' . $argument . '\');';
+				'VALUES (\'' . $next_id . '\', \'' . encodeText($argument) . '\');';
 		if(!($result = $db->sql_query($sql)))
 		{
 			$error = $db->sql_error();
@@ -56,7 +56,7 @@ if($input['command'] == '/뭐먹지')
 	if($subcommand == '삭제')
 	{
 		$sql = 'DELETE FROM ' . $config['db_name'] . '.command_whattoeat_list 
-				WHERE name = \'' . $argument . '\'
+				WHERE name = \'' . encodeText($argument) . '\'
 				LIMIT 1';
 		if(!($result = $db->sql_query($sql)))
 		{
@@ -80,7 +80,7 @@ if($input['command'] == '/뭐먹지')
 
 		while( $row = $db->sql_fetchrow($result) )
 		{
-			print $row['name'] . chr(10);
+			print decodeText($row['name']) . chr(10);
 		}
 		die();
 	} // ~ $subcommand 목록
@@ -99,9 +99,8 @@ if($input['command'] == '/뭐먹지')
 		$db->sql_freeresult($result);
 
 		$username = '뭐먹지?';
-
 		$payload = json_encode(array(
-			'text' => $result, 
+			'text' => decodeText($result), 
 			'username' => $username, 
 			'channel' => $channel_name
 			));

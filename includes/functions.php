@@ -31,4 +31,13 @@ function getRealnameByUsername($username)
 	return($realname);
 }
 
+function decodeText($text)
+{
+	return(urldecode(base64_decode($text)));
+}
+function encodeText($text)
+{
+	return(base64_encode(urlencode($text)));
+}
+
 ?>

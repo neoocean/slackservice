@@ -21,7 +21,7 @@ if($input['command'] == '/사용자')
 		// 같은 이름이 있는지 확인
 		$sql = 'SELECT id 
 				FROM users 
-				WHERE name = \'' . $user_name . '\';';
+				WHERE name = \'' . decodeText($user_name) . '\';';
 		if(!($result = $db->sql_query($sql)))
 		{
 			die('쿼리에 실패했습니다: ' . $sql);
@@ -48,7 +48,7 @@ if($input['command'] == '/사용자')
 			$next_id = $db->sql_fetchfield('id') + 1;
 			$db->sql_freeresult($result);
 			$sql = 'INSERT INTO ' . $config['db_name'] . '.users ' . '(id, name, realname) 
-					VALUES(\'' . $next_id . '\', \'' . $user_name . '\', \'' . $user_realname . '\');';
+					VALUES(\'' . $next_id . '\', \'' . $user_name . '\', \'' . encodeText($user_realname) . '\');';
 			if(!($result = $db->sql_query($sql)))
 			{
 				die('쿼리에 실패했습니다: ' . $sql);
@@ -61,7 +61,7 @@ if($input['command'] == '/사용자')
 		{
 			$sql = 'UPDATE users 
 					SET name = \'' . $user_name . '\', 
-						realname = \'' . $user_realname . '\' 
+						realname = \'' . encodeText($user_realname) . '\' 
 					WHERE name = \'' . $user_name . '\' 
 					LIMIT 1;';
 			if(!($result = $db->sql_query($sql)))
@@ -80,7 +80,7 @@ if($input['command'] == '/사용자')
 		}
 
 		$sql = 'DELETE FROM users 
-				WHERE name = ' . $user_name . ' 
+				WHERE name = \'' . $user_name . '\' 
 				LIMIT 1;';
 		if(!($result = $db->sql_query($sql)))
 		{
@@ -100,7 +100,7 @@ if($input['command'] == '/사용자')
 		}
 		while( $row = $db->sql_fetchrow($result) )
 		{
-			echo $row['name'] . ': ' . $row['realname'] . chr(10);	
+			echo $row['name'] . ': ' . decodeText($row['realname']) . chr(10);	
 		}
 		die('출력을 마쳤습니다.');
 	}
