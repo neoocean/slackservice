@@ -23,7 +23,7 @@ if($hour == 12)
 	$payload = json_encode(array(
 		'text' => '도탑전기 플레이어 여러분. 점심 고기 드실 시간입니다.', 
 		'username' => '도탑고기', 
-		'channel' => '#random', 
+		'channel' => '#free', 
 		'icon_url' => 'http://slackservice.neoocean.net/files/dotap.png'
 		));
 	sendPostToURL($config['url'], $payload);
@@ -34,7 +34,7 @@ if($hour == 18)
 	$payload = json_encode(array(
 		'text' => '도탑전기 플레이어 여러분. 저녁 고기 드실 시간입니다.', 
 		'username' => '도탑고기', 
-		'channel' => '#random', 
+		'channel' => '#free', 
 		'icon_url' => 'http://slackservice.neoocean.net/files/dotap.png'
 		));
 	sendPostToURL($config['url'], $payload);
