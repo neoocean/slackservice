@@ -27,9 +27,8 @@ header('Location: onenote:///' . $link);
 <script language="javascript" type="text/javascript"> 
 <!--
 function windowClose()
-{ 
-	window.open('','_parent',''); 
-	window.close();
+{
+	window.top.close();
 } 
 window.onload = windowClose 
 -->
