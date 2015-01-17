@@ -46,7 +46,6 @@ function getOnenoteNoteName($address)
 	if(strpos($address, '.one') === false)
 	{
 		// address targets to a note
-		$address = str_replace('\\\\\\\\', '\\\\', $address);
 		$address = str_replace('\\\\', '\\', $address);
 		$title = $address;
 	}
@@ -74,8 +73,6 @@ function getOnenoteNoteName($address)
 			$title = $section . ' / ' . $note;
 		}		
 	}
-
-
 
 	return($title);
 }
