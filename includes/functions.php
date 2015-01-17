@@ -43,26 +43,39 @@ function encodeText($text)
 function getOnenoteNoteName($address)
 {
 
-	$end = strpos($address, '.one');
-	$begin = strrpos($address, '\\') + 1;
-
-	$section = substr($address, $begin, ($end - $begin));
-	$section = str_replace('%20', ' ', $section);
-
-	$end = strpos($address, '&section-id=');
-	$begin = strpos($address, '.one#') + 5;
-
-	$note = substr($address, $begin, ($end - $begin));
-	$note = str_replace('%20', ' ', $note);
-
-	if($note == '')
+	if(strpos($address, '.one') === false)
 	{
-		$title = $section;
+		// address targets to a note
+		$address = str_replace('\\\\\\\\', '\\\\', $address);
+		$address = str_replace('\\\\', '\\', $address);
+		$title = $address;
 	}
 	else
 	{
-		$title = $section . ' / ' . $note;
+		// address targets to a section.
+		$end = strpos($address, '.one');
+		$begin = strrpos($address, '\\') + 1;
+
+		$section = substr($address, $begin, ($end - $begin));
+		$section = str_replace('%20', ' ', $section);
+
+		$end = strpos($address, '&section-id=');
+		$begin = strpos($address, '.one#') + 5;
+
+		$note = substr($address, $begin, ($end - $begin));
+		$note = str_replace('%20', ' ', $note);
+
+		if($note == '')
+		{
+			$title = $section;
+		}
+		else
+		{
+			$title = $section . ' / ' . $note;
+		}		
 	}
+
+
 
 	return($title);
 }
