@@ -13,6 +13,34 @@ function sendPostToURL($url, $string)
 	return(curl_exec($ch));
 }
 
+function getChannelnameByChannelid($channel_id, $channel_name)
+{
+	if($channel_name != '#privategroup')
+	{
+		return($channel_name);
+	}
+
+	global $db;
+
+	$sql = 'SELECT channel_name 
+			FROM channels 
+			WHERE channel_id = \'' . $channel_id . '\' 
+			LIMIT 1;';
+	if(!($result = $db->sql_query($sql)))
+	{
+		die('쿼리에 실패했습니다: ' . $sql);
+	}
+	if($db->sql_numrows() <= 0)
+	{
+		return('test');
+	}
+
+	$channel_name = $db->sql_fetchfield('channel_name');
+	$db->sql_freeresult($result);
+
+	return($channel_name);
+}
+
 function getRealnameByUsername($username)
 {
 	global $db;

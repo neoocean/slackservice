@@ -40,17 +40,6 @@ if( is_array($_GET) )
 	@reset($_GET);
 }
 
-$input['token'] = $_POST['token'];
-$input['team_id'] = $_POST['team_id'];
-$input['channel_id'] = $_POST['channel_id'];
-$input['channel_name'] = '#' . $_POST['channel_name'];
-$input['user_id'] = $_POST['user_id'];
-$input['user_name'] = $_POST['user_name'];
-$input['command'] = $_POST['command'];
-$input['text'] = $_POST['text'];
-
-$input['link'] = $_GET['l'];
-
 $db = new sql_db(
 	$config['db_host'], 
 	$config['db_user'], 
@@ -61,5 +50,16 @@ if(!$db->db_connect_id)
 {
 	die('데이터베이스에 접속할 수 없습니다.');
 }
+
+$input['token'] = $_POST['token'];
+$input['team_id'] = $_POST['team_id'];
+$input['channel_id'] = $_POST['channel_id'];
+$input['user_id'] = $_POST['user_id'];
+$input['user_name'] = $_POST['user_name'];
+$input['command'] = $_POST['command'];
+$input['text'] = $_POST['text'];
+$input['channel_name'] = getChannelnameByChannelid($input['channel_id'], '#' . $_POST['channel_name']);
+$input['link'] = $_GET['l'];
+
 
 ?>
