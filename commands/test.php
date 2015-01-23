@@ -10,13 +10,6 @@ if($input['command'] == '/테스트')
 
 	print_r($input);
 
-	$payload = json_encode(array(
-		'text' => 		'test command', 
-		'username' => 	'test', 
-		'channel' => 	'#testprivategroup' 
-		), JSON_UNESCAPED_UNICODE);
-	sendPostToURL($config['url'], $payload);
-
 	die();
 
 }
