@@ -11,6 +11,7 @@ include($config['absolute_path'] . 'commands/dice.php');
 include($config['absolute_path'] . 'commands/whattoeat.php');
 include($config['absolute_path'] . 'commands/onenotelink.php');
 include($config['absolute_path'] . 'commands/users.php');
+include($config['absolute_path'] . 'commands/test.php');
 
 die('아무것도 실행되지 않았습니다.');
 
