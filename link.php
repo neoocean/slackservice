@@ -24,15 +24,14 @@ $db->sql_freeresult($result);
 header('Location: onenote:///' . $link);
 ?>
 
-<script language="javascript" type="text/javascript"> 
+<head>
+<script type="text/javascript">
 <!--
-function windowClose()
-{
-	window.top.close();
-} 
-window.onload = windowClose 
--->
+   // window.location = "<?php echo 'onenote:///' . $link; ?>";
+   window.close();
+//-->
 </script>
+</head>
 
 <?php
 die();
