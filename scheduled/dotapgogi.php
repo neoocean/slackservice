@@ -18,26 +18,35 @@ if(!($result = $db->sql_query($sql)))
 	die('쿼리에 실패했습니다: ' . $sql);
 }
 
-if($hour == 12)
-{
-	$payload = json_encode(array(
-		'text' => '도탑전기 플레이어 여러분. 점심 고기 드실 시간입니다.', 
-		'username' => '도탑고기', 
-		'channel' => '#free', 
-		'icon_url' => 'http://slackservice.neoocean.net/files/dotap.png'
-		));
-	sendPostToURL($config['url'], $payload);
-}
+$dayofweek = date('w'); // 0: Sun to 6: Sat
 
-if($hour == 18)
+if($dayofweek > 0 && $dayofweek < 6)
 {
-	$payload = json_encode(array(
-		'text' => '도탑전기 플레이어 여러분. 저녁 고기 드실 시간입니다.', 
-		'username' => '도탑고기', 
-		'channel' => '#free', 
-		'icon_url' => 'http://slackservice.neoocean.net/files/dotap.png'
-		));
-	sendPostToURL($config['url'], $payload);
-}
+
+	if($hour == 12)
+	{
+		$payload = json_encode(array(
+			'text' => '도탑전기 플레이어 여러분. 점심 고기 드실 시간입니다.', 
+			'username' => '도탑고기', 
+			'channel' => '#free', 
+			'icon_url' => 'http://slackservice.neoocean.net/files/dotap.png'
+			));
+		sendPostToURL($config['url'], $payload);
+	}
+
+	if($hour == 18)
+	{
+		$payload = json_encode(array(
+			'text' => '도탑전기 플레이어 여러분. 저녁 고기 드실 시간입니다.', 
+			'username' => '도탑고기', 
+			'channel' => '#free', 
+			'icon_url' => 'http://slackservice.neoocean.net/files/dotap.png'
+			));
+		sendPostToURL($config['url'], $payload);
+	}
+
+} // ~ if dayofweek
+
+
 
 ?>
