@@ -102,7 +102,7 @@ if($input['command'] == '/뭐먹지')
 		$payload = json_encode(array(
 			'text' => decodeText($result), 
 			'username' => $username, 
-			'channel' => $channel_name
+			'channel' => $input['channel_name']
 			));
 		sendPostToURL($config['url'], $payload);
 		die();
